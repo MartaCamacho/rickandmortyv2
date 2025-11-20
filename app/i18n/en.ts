@@ -23,6 +23,10 @@ const en = {
       button: "Let's try this again",
     },
   },
+  episodes: {
+    title: "Episodes",
+    subtitle: "This is a List of all the Rick and Morty episodes",
+  },
 }
 
 export default en
