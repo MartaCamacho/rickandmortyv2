@@ -7,6 +7,7 @@ import { useAppTheme } from "@/theme/context"
 import { $styles } from "@/theme/styles"
 import type { ThemedStyle } from "@/theme/types"
 import { useSafeAreaInsetsStyle } from "@/utils/useSafeAreaInsetsStyle"
+import { EpisodeList } from "@/components/EpisodesList/EpisodesList"
 
 const welcomeLogo = require("@assets/images/rick_and_morty_title.png")
 
@@ -16,7 +17,7 @@ export const WelcomeScreen: FC = function WelcomeScreen() {
   const $bottomContainerInsets = useSafeAreaInsetsStyle(["bottom"])
 
   return (
-    <Screen preset="scroll" contentContainerStyle={$styles.flex1}>
+    <Screen preset="fixed" contentContainerStyle={$styles.flex1}>
       <View style={themed($topContainer)}>
         <Image style={themed($welcomeLogo)} source={welcomeLogo} resizeMode="contain" />
         <Text
@@ -31,6 +32,9 @@ export const WelcomeScreen: FC = function WelcomeScreen() {
           tx="episodes:subtitle"
           preset="heading"
         />
+      </View>
+      <View>
+        <EpisodeList />
       </View>
     </Screen>
   )
