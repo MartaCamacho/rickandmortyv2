@@ -7,6 +7,7 @@
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 
+import { EpisodeDetailScreen } from "@/components/EpisodeDetails/EpisodeDetails"
 import Config from "@/config"
 import { ErrorBoundary } from "@/screens/ErrorScreen/ErrorBoundary"
 import { WelcomeScreen } from "@/screens/WelcomeScreen"
@@ -40,6 +41,7 @@ const AppStack = () => {
       }}
     >
       <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      <Stack.Screen name="EpisodeDetails" component={EpisodeDetailScreen} />
       {/** 🔥 Your screens go here */}
       {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
     </Stack.Navigator>

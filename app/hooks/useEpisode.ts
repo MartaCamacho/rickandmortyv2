@@ -1,9 +1,20 @@
 import { useQuery } from "@tanstack/react-query"
 
-import { getEpisode } from "../services/api/episodes"
+export function useEpisode(id: number) {
+  return useQuery({
+    queryKey: ["episode-details", id],
+    queryFn: async () => {
+      const res = await fetch(`https://rickandmortyapi.com/api/episode/${id}`)
+      const episode = await res.json()
 
-export const useEpisode = (id: string) =>
-  useQuery({
-    queryKey: ["episode", id],
-    queryFn: () => getEpisode(id),
+      const characters = await Promise.all(
+        episode.characters.map(async (url: string) => {
+          const res = await fetch(url)
+          return res.json()
+        }),
+      )
+
+      return { ...episode, characters }
+    },
   })
+}
