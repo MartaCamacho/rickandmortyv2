@@ -15,19 +15,24 @@ type EpisodeItemProps = {
 export function EpisodeItem({ name, airDate, episodeCode, onPress }: EpisodeItemProps) {
   return (
     <Pressable onPress={onPress} style={styles.container}>
-      <Card style={styles.card} contentStyle={styles.cardContent} preset="default">
-        <Text preset="heading" text={name} />
-
-        <View style={styles.infoRow}>
-          <Text text="Air date:" preset="subheading" />
-          <Text text={airDate} />
-        </View>
-
-        <View style={styles.infoRow}>
-          <Text text="Episode:" preset="subheading" />
-          <Text text={episodeCode} />
-        </View>
-      </Card>
+      <Card
+        HeadingComponent={<Text preset="heading" text={name} />}
+        ContentComponent={
+          <View style={styles.infoRow}>
+            <Text text="Air date:" preset="subheading" />
+            <Text text={airDate} />
+          </View>
+        }
+        style={styles.card}
+        contentStyle={styles.cardContent}
+        preset="default"
+        FooterComponent={
+          <View style={styles.infoRow}>
+            <Text text="Episode:" preset="subheading" />
+            <Text text={episodeCode} />
+          </View>
+        }
+      ></Card>
     </Pressable>
   )
 }

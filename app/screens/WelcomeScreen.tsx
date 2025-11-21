@@ -1,13 +1,12 @@
 import { FC } from "react"
-import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
+import { Image, ImageStyle, ScrollView, TextStyle, View, ViewStyle } from "react-native"
 
+import { EpisodeList } from "@/components/EpisodesList/EpisodesList"
 import { Screen } from "@/components/Screen"
 import { Text } from "@/components/Text"
 import { useAppTheme } from "@/theme/context"
-import { $styles } from "@/theme/styles"
 import type { ThemedStyle } from "@/theme/types"
 import { useSafeAreaInsetsStyle } from "@/utils/useSafeAreaInsetsStyle"
-import { EpisodeList } from "@/components/EpisodesList/EpisodesList"
 
 const welcomeLogo = require("@assets/images/rick_and_morty_title.png")
 
@@ -17,33 +16,40 @@ export const WelcomeScreen: FC = function WelcomeScreen() {
   const $bottomContainerInsets = useSafeAreaInsetsStyle(["bottom"])
 
   return (
-    <Screen preset="fixed" contentContainerStyle={$styles.flex1}>
-      <View style={themed($topContainer)}>
-        <Image style={themed($welcomeLogo)} source={welcomeLogo} resizeMode="contain" />
-        <Text
-          testID="welcome-heading"
-          style={themed($welcomeHeading)}
-          tx="episodes:title"
-          preset="heading"
-        />
-        <Text
-          testID="welcome-heading"
-          style={themed($welcomeSubheading)}
-          tx="episodes:subtitle"
-          preset="heading"
-        />
-      </View>
-      <View>
-        <EpisodeList />
-      </View>
+    <Screen preset="scroll" safeAreaEdges={["top"]} contentContainerStyle={themed($topSection)}>
+      <ScrollView>
+        <View style={themed($topContainer)}>
+          <Image style={themed($welcomeLogo)} source={welcomeLogo} resizeMode="contain" />
+          <Text
+            testID="welcome-heading"
+            style={themed($welcomeHeading)}
+            tx="episodes:title"
+            preset="heading"
+          />
+          <Text
+            testID="welcome-heading"
+            style={themed($welcomeSubheading)}
+            tx="episodes:subtitle"
+            preset="heading"
+          />
+        </View>
+        <View style={themed([$bottomContainerInsets, { flex: 2 }])}>
+          <EpisodeList />
+        </View>
+      </ScrollView>
     </Screen>
   )
 }
 
 const $topContainer: ThemedStyle<ViewStyle> = ({ spacing }) => ({
   paddingHorizontal: spacing.lg,
+  flex: 1,
 })
 
+const $topSection: ThemedStyle<ViewStyle> = ({ spacing }) => ({
+  paddingHorizontal: spacing.lg,
+  flex: 2,
+})
 const $welcomeLogo: ThemedStyle<ImageStyle> = ({ spacing }) => ({
   height: 200,
   width: "100%",
