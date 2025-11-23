@@ -1,10 +1,10 @@
 import { FC } from "react"
-import { View, Pressable, StyleSheet } from "react-native"
+import { View, Pressable, ViewStyle } from "react-native"
 
-import { spacing } from "@/theme/spacing"
-
-import { Card } from "../Card"
-import { Text } from "../Text"
+import { Card } from "@/components/Card"
+import { Text } from "@/components/Text"
+import { useAppTheme } from "@/theme/context"
+import { ThemedStyle } from "@/theme/types"
 
 type EpisodeItemProps = {
   name: string
@@ -19,44 +19,47 @@ const EpisodeItem: FC<EpisodeItemProps> = ({
   episodeCode,
   onPress,
 }: EpisodeItemProps) => {
+  const { themed } = useAppTheme()
   return (
-    <Pressable onPress={onPress} style={styles.container}>
+    <Pressable onPress={onPress} style={themed($container)}>
       <Card
         HeadingComponent={<Text preset="heading" text={name} />}
         ContentComponent={
-          <View style={styles.infoRow}>
+          <View style={themed($infoRow)}>
             <Text text="Air date:" preset="subheading" />
             <Text text={airDate} />
           </View>
         }
-        style={styles.card}
-        contentStyle={styles.cardContent}
+        style={themed($card)}
+        contentStyle={themed($cardContent)}
         preset="default"
         FooterComponent={
-          <View style={styles.infoRow}>
+          <View style={themed($infoRow)}>
             <Text text="Episode:" preset="subheading" />
             <Text text={episodeCode} />
           </View>
         }
-      ></Card>
+      />
     </Pressable>
   )
 }
 
 export default EpisodeItem
 
-const styles = StyleSheet.create({
-  card: {
-    padding: spacing.md,
-  },
-  cardContent: {
-    gap: spacing.sm,
-  },
-  container: {
-    marginBottom: spacing.md,
-  },
-  infoRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
+const $card: ThemedStyle<ViewStyle> = ({ spacing }) => ({
+  padding: spacing.md,
+})
+
+const $cardContent: ThemedStyle<ViewStyle> = ({ spacing }) => ({
+  gap: spacing.sm,
+})
+
+const $container: ThemedStyle<ViewStyle> = ({ spacing }) => ({
+  marginBottom: spacing.md,
+  overflow: "visible",
+})
+
+const $infoRow: ThemedStyle<ViewStyle> = () => ({
+  flexDirection: "row",
+  justifyContent: "space-between",
 })

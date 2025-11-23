@@ -14,10 +14,12 @@ const EpisodesListScreen: FC = () => {
   const $bottomContainerInsets = useSafeAreaInsetsStyle(["bottom"])
 
   return (
-    <Screen preset="scroll" safeAreaEdges={["top"]} contentContainerStyle={themed($topSection)}>
-      <EpisodesListHeader />
+    <Screen preset="scroll" safeAreaEdges={["bottom"]} contentContainerStyle={themed($topSection)}>
       <View style={themed([$bottomContainerInsets, { flex: 2 }])}>
-        <EpisodesList />
+        <EpisodesListHeader />
+        <View style={themed([$bottomContainerInsets])}>
+          <EpisodesList />
+        </View>
       </View>
     </Screen>
   )
@@ -26,17 +28,6 @@ const EpisodesListScreen: FC = () => {
 export default EpisodesListScreen
 
 const $topSection: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  paddingHorizontal: spacing.xs,
-  flex: 2,
-  minHeight: undefined,
-  maxWidth: 500,
-  alignSelf: "center",
-})
-
-const $listSection: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  paddingHorizontal: spacing.xs,
-  flex: 2,
-  minHeight: undefined,
   maxWidth: 500,
   alignSelf: "center",
 })

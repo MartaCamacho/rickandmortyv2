@@ -22,7 +22,7 @@ const EpisodesListHeader: FC = () => {
 export default EpisodesListHeader
 
 const $topContainer: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  paddingHorizontal: spacing.lg,
+  paddingHorizontal: spacing.xl,
 })
 
 const $episodesListLogo: ThemedStyle<ImageStyle> = ({ spacing }) => ({
