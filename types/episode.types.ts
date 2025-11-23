@@ -28,3 +28,8 @@ export interface Character {
   url: string
   created: string
 }
+
+export interface EpisodesListSearchProps {
+  search: string
+  setSearch: (text: string) => void
+}
