@@ -26,12 +26,12 @@ Fetches and renders all episodes, including basic episode information.
 Displays more detailed data for a specific episode, fetched dynamically using TanStack Query.
 
 # Getting Started
-npm install --legacy-peer-deps
-npm run start
-To make things work on your local simulator, or on your phone, you need first to run eas build. There are many shortcuts on package.json to make it easier:
+- npm install --legacy-peer-deps
+- npm run start
+- To make things work on your local simulator, or on your phone, you need first to run eas build. There are many shortcuts on package.json to make it easier:
 
-npm run build:ios:sim # build for ios simulator
-npm run build:ios:device # build for ios device
-npm run build:ios:prod # build for ios device
+- npm run build:ios:sim # build for ios simulator
+- npm run build:ios:device # build for ios device
+- npm run build:ios:prod # build for ios device
 
 Follow the official [EAS setup guide](https://docs.expo.dev/build/setup/)  if you need it 
