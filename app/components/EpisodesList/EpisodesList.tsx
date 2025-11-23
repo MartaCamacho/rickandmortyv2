@@ -1,12 +1,12 @@
+import { FC } from "react"
 import { ActivityIndicator } from "react-native"
 
+import EpisodeItem from "@/components/EpisodesList/EpisodesListItem"
+import { Text } from "@/components/Text"
 import { useEpisodes } from "@/hooks/useEpisodes"
 import { navigate } from "@/navigators/navigationUtilities"
 
-import { Text } from "../Text"
-import { EpisodeItem } from "./EpisodesListItem"
-
-export const EpisodeList = () => {
+const EpisodesList: FC = () => {
   const { data, isLoading, isError } = useEpisodes()
 
   if (isLoading) {
@@ -31,4 +31,8 @@ export const EpisodeList = () => {
         }}
       />
     ))
+
+  return <Text text="There are no episodes to show 😢" preset="subheading" />
 }
+
+export default EpisodesList

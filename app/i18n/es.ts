@@ -26,6 +26,10 @@ const es: Translations = {
       button: "Intentemos de nuevo",
     },
   },
+  episodes: {
+    title: "Episodios",
+    subtitle: "Esta es una lista de los episodios de Right y Morty",
+  },
 }
 
 export default es

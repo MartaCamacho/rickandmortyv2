@@ -1,3 +1,4 @@
+import { FC } from "react"
 import { View, Pressable, StyleSheet } from "react-native"
 
 import { spacing } from "@/theme/spacing"
@@ -12,7 +13,12 @@ type EpisodeItemProps = {
   onPress?: () => void
 }
 
-export function EpisodeItem({ name, airDate, episodeCode, onPress }: EpisodeItemProps) {
+const EpisodeItem: FC<EpisodeItemProps> = ({
+  name,
+  airDate,
+  episodeCode,
+  onPress,
+}: EpisodeItemProps) => {
   return (
     <Pressable onPress={onPress} style={styles.container}>
       <Card
@@ -36,6 +42,8 @@ export function EpisodeItem({ name, airDate, episodeCode, onPress }: EpisodeItem
     </Pressable>
   )
 }
+
+export default EpisodeItem
 
 const styles = StyleSheet.create({
   card: {
