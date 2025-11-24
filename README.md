@@ -27,7 +27,7 @@ Displays more detailed data for a specific episode, fetched dynamically using Ta
 
 # Getting Started
 - npm install --legacy-peer-deps
-- npm run start
+- npx expo start
 - To make things work on your local simulator, or on your phone, you need first to run eas build. There are many shortcuts on package.json to make it easier:
 
 - npm run build:ios:sim # build for ios simulator
